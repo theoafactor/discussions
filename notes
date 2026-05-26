@@ -1,0 +1,10 @@
+code -> build docker image -> push this image to docker hub -> deploy the image on EC2 INSTANCE
+
+html code (actual software)
+Mongo
+MongoExpress
+
+
+- Live update 
+- Add Volumes/Persistence (So that data is kept)
+

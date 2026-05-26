@@ -1,0 +1,22 @@
+name: Deployment for DockerCompose app 
+on: 
+  push: 
+    branches: 
+    - deploy
+jobs: 
+  deployment-job: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout of repo
+        uses: actions/checkout@v6 
+      
+      - name: build the docker image
+        run: sudo docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest .
+
+      - name: login to Docker hub
+        run: sudo docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: push the docker image
+        run: sudo docker push ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
+
+        
