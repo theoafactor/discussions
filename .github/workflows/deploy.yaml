@@ -22,3 +22,8 @@ jobs:
       - name: push the docker image
         run: sudo docker push ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
 
+      - name: deploy to live within runner
+        run: |
+          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
+          sudo docker run -d -p 80:80 --name discussions ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
+
