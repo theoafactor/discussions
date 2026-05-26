@@ -7,7 +7,7 @@ jobs:
   deployment-job: 
     runs-on: ubuntu-latest
     steps: 
-      - name: Say hello
+      - name: Say helloCKERHUB_USERNAME
         run: echo "Hello"
         
       - name: checkout of repo
