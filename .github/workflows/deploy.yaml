@@ -25,5 +25,7 @@ jobs:
       - name: deploy to live within runner
         run: |
           sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
+          sudo docker stop discussions
+          sudo docker rm discussions
           sudo docker run -d -p 80:80 --name discussions ${{ secrets.DOCKERHUB_USERNAME }}/discussions:latest
 
